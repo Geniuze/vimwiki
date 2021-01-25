@@ -77,7 +77,8 @@ https://bugzilla.grandstream.com/bugzilla/buglist.cgi?bug_status=UNCONFIRMED&bug
 gwn, password
 vlan10， test10 、 123456
 
-172.16.0.60 18120 password 
+passpoint 172.16.0.60 18120 password
+osen 172.16.0.60 1811 password
 
 = 查看是否需要解锁 =
 cat /proc/gxp/production 
