@@ -1,0 +1,130 @@
+= 设备 =
+
+| MAC          | 密码     | 型号    | 备注        |
+|--------------|----------|---------|-------------|
+| 000B829A9680 | 6F7ykHj8 | GWN7630 | 报废 - 已还 |
+| 000B82A19BA0 | 1ipbdc6z | GWN7610 |             |
+| C074AD17C324 | beb7Utgf | GWN7602 |             |
+| C074AD1D7EF4 | KS8uScfM | GWN7605 |             |
+| 000B82AFC9C8 | h7j3bkWT | GWN7600 |             |
+| C074AD1DC9BC | yPBCxz4N | GWN7615 |             |
+| C074AD1D7E4C | 5FJk3c4h | GWN7605 |             |
+|              | QDfKfYKV | GWNCloud |             |
+| 000B82C7A142 | 5X6V5XGb | GWN7660 |             |
+| 000B82AA0000 | bSEE9gx4 | GWN7660 |             |
+| 000B82AA0014 | vS4VgxPx | GWN7660 ||
+
+= 产品相关 =
+按键恢复出厂脚本：/etc/rc.button/reset 
+升级命令：provision -f --url http://192.168.122.222/http/gwn7630fw.bin 
+云端url：gwn.cloud 
+BUG单：bugzilla
+用户名，密码： zhenzhang@grandstream.cn zhenzhang753412
+
+= 源码相关 =
+zhenzhang/zhenzhang32217868
+git clone ssh://zhenzhang@192.168.120.246:29418/GWN_HZ
+git clone ssh://zhenzhang@192.168.120.246:29418/GWN_Web_New
+
+= 编译 =
+    # 生成密钥
+        openssl genrsa -out gwn_firmware_private 2048
+        #cp rsa_private_key.pem image_bulid/gwn_firmware_private
+    # 打包生成指定型号的版本
+        ./compile_all.py  gwn7610   // 编译
+        ./genimage gwn7630 --version 1.0.8.3   //打包
+        image_build/build/gwn7630/images/prod/{0}fw.bin为升级文件({0}为设备型号)
+        build_path // 型号对应支持模块文件
+        image_build/products/gwn7610.product // 打包拷贝
+
+= 本地Manager =
+https://192.168.122.23:8443
+user: hbli
+password: 1q2w3e4r
+ssh：
+user : dev4
+password : 1qaz!QAZ
+设备型号：
+build_func.sh
+高通：7600 7610
+mt7621：7605 7615 7630
+mt7620：7602
+
+= 本地云 =
+192.168.121.35 admin.gwn.cloud
+192.168.121.35 www.gwn.cloud
+192.168.121.35 api.gwn.cloud
+192.168.121.37 gateway.gwn.cloud
+192.168.121.35 syslog.gwn.cloud
+192.168.121.38 eu-api.gwn.cloud
+192.168.121.39 eu-gateway.gwn.cloud
+192.168.121.38 eu.gwn.cloud
+192.168.121.38 eu-syslog.gwn.cloud
+192.168.121.38 eu-admin.gwn.cloud
+
+= BUG单搜索 =
+https://bugzilla.grandstream.com/bugzilla/query.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Controller&component=DiscoveryTool&component=hardware&component=HW&component=Software&component=The%20performance%20test&component=Web&product=GWN&product=GWN7000&product=GWN7002W&product=GWN7600&product=GWN7600LR&product=GWN7602&product=GWN7605%267605LR&product=GWN7610&product=GWN7615&product=GWN7630&product=GWN7630LR&query_format=advanced&resolution=---&resolution=FIXED&resolution=INVALID&resolution=WONTFIX&resolution=LATER&resolution=REMIND&resolution=DUPLICATE&resolution=WORKSFORME&resolution=MOVED&known_name=1_Gwn_News
+
+https://bugzilla.grandstream.com/bugzilla/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&component=Controller&component=DiscoveryTool&component=hardware&component=HW&component=Software&component=The%20performance%20test&component=Web&known_name=1_Gwn_News&list_id=1726099&product=GWN&product=GWN7000&product=GWN7002W&product=GWN7600LR&product=GWN7602&product=GWN7605%267605LR&product=GWN7610&product=GWN7615&product=GWN7630%26GWN7630LR&product=GWN7630LR&product=GWN7660&query_based_on=1_Gwn_News&query_format=advanced&resolution=---&resolution=FIXED&resolution=INVALID&resolution=WONTFIX&resolution=LATER&resolution=REMIND&resolution=DUPLICATE&resolution=WORKSFORME&resolution=MOVED
+
+
+= 远程 =
+7000 ：admin admin1
+192.168.122.187:8022 -> 192.168.1.110:22
+
+= 测试Radiu =
+172.16.0.36   password
+gwn, password
+vlan10， test10 、 123456
+
+172.16.0.60 18120 password 
+
+= 查看是否需要解锁 =
+cat /proc/gxp/production 
+
+= 使用高通板抓取无线空口包 =
+wlanconfig mon0 create wlandev wifi0 wlanmode monitor && ifconfig mon0 up 
+wlanconfig mon1 create wlandev wifi1 wlanmode monitor && ifconfig mon1 up 
+GWN7660:
+wlanconfig mon0 create wlandev wifi0 wlanmode monitor && iw phy "$(cat /sys/class/net/wifi0/phy80211/name)" interface add mon0 type monitor && ifconfig mon0 up
+wlanconfig mon1 create wlandev wifi1 wlanmode monitor && iw phy "$(cat /sys/class/net/wifi1/phy80211/name)" interface add mon1 type monitor && ifconfig mon1 up
+
+= 先在 pc 端执行 =
+nc -l 9999 | wireshark -k -S -i -
+然后在板子上执行
+tcpdump -n -i mon0 -s 65535 -w - not port 9999 | nc 192.168.1.110 9999
+tcpdump -n -i mon1 -s 65535 -w - not port 9999 | nc 192.168.1.110 9999
+
+= 使用ramdisk加载GWN7660固件 =
+wget ftp://192.168.122.90/7660_ramdisk.tgz
+fit-qcom-ipq60xx-cpxx.itb是打入补丁kernel.diff后，编译出的内核
+rootfs是我们库上代码编译出的文件系统
+root-ipq是qsdk编译出的文件系统
+针对某个程序，编译后，手动拷入rootfs目录下，再执行./build.sh打包，然后在串口加载，新的程序即可生效
+
+= uboot下启动命令 =
+setenv serverip 192.168.122.90
+setenv ipaddr 192.168.122.93
+setenv bootargs initrd=0x44500000,0x2000000 root=/dev/ram
+tftpboot 0x44000000 7066-ramdisk.itb; bootm 0x44000000#config@cp03-c1
+
+目前文件系统最大为32M，若超过了，修改内核配置CONFIG_BLK_DEV_RAM_SIZE=32768和uboot启动参数 initrd=0x44500000,0x2000000到更大的值即可
+
+目前获取到ip地址后，不会添加默认网关路由，所以无法ping通路由器上级网络，需要手动设置默认路由
+./bin/dd if=fit-qcom-ipq60xx-cpxx.itb of=a.bin bs=1024k count=5 conv=sync
+这句要改成
+./bin/dd if=fit-qcom-ipq60xx-cpxx.itb of=7066-ramdisk.itb bs=1024k count=5 conv=sync
+
+手动修改uboot启动环境变量更改启动分区
+setenv bootargs 'ubi.mtd=firmwareB ubi.mtd=firmwareA ubi.mtd=remain rootfsname=ubi0:ubi_rootfs rootfstype=squashfs'
+ubi part firmwareB && ubi read 0x44000000 kernel && bootm 0x44000200
+
+= 网卡强制100M协商 =
+while true ; do speed=$(ssdk_sh port speed get 3 | grep speed | awk -F: '{print $2}' | awk -F\( '{print $1}'); [ $speed -eq 10 ] && ssdk_sh port speed set 3 100; sleep 1 ; done
+
+= ovs命令 =
+ovs-ofctl show br-lan0_zone0 查看桥接口的端口
+ovs-vsctl list bridge 查看ovs配置
+
+= 7660重新烧写art分区 =
+dd if=wifi6.art of=/dev/mtdblock8

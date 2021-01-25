@@ -1,0 +1,192 @@
+= 2021.1.4 周一 =
+
+* Bug 184806 - [GWN Cloud_bridge]wep encryption, link shows bridge is successful,but network is blocked
+    * 环境搭建及测试
+    * 7660桥接7600/7630lr，可桥接上，只有wep时桥接上，网络不通，此时接上7660网线，修改加密方式，下发配置后拔掉网线，可以桥接上，并网络也通
+    * 7600/7630lr桥接7600时，可桥接上，只有wep时桥接上，网络不通
+* hs20测试
+    * 申请网卡测试
+* WPA3联盟认证
+    * WPA3-192 radius tls加密缺少类型
+        * RADIUS_ATTR_WLAN_PAIRWISE_CIPHER = 186,
+        * RADIUS_ATTR_WLAN_GROUP_CIPHER = 187,
+        * RADIUS_ATTR_WLAN_AKM_SUITE = 188,
+        * RADIUS_ATTR_WLAN_GROUP_MGMT_CIPHER = 189,
+* 测试沟通
+    * wpa_supplicant 使用eap-tls无法连接
+        * 证书问题
+    * 8021x认证不通过
+        * 8021xd进程异常退出，已有问题单
+= 2021.1.5 周二 =
+* WPA3联盟认证
+    * WPA3-192 radius tls加密缺少类型
+        * RADIUS_ATTR_WLAN_PAIRWISE_CIPHER = 186,
+        * RADIUS_ATTR_WLAN_GROUP_CIPHER = 187,
+        * RADIUS_ATTR_WLAN_AKM_SUITE = 188,
+        * RADIUS_ATTR_WLAN_GROUP_MGMT_CIPHER = 189,
+        * https://192.168.120.245/#/c/211914/1
+    * WPA3加密校验
+        * 4.6.1
+        * 修改wpa_supplicant使之发送错误包，以确认校验有效性
+        * https://192.168.120.245/#/c/211914/1
+    * Radius REJECT 消息携带185
+        * 添加185属性解析，并将reason下发到驱动并放到deauth中
+= 2021.1.6 周三 =
+* WPA3联盟认证
+    * radius认证 ipv6支持
+        * https://192.168.120.245/#/c/212075/
+    * Bug 185068 - [GWN Cloud_rrm]No neighborhood AP is detected, wireless power is adjusted to a maximum of 30dBm, channel adjustment is consistent or close
+        * 添加针对7000的管理不启用RRM功能后云端管理也无法启用RRM功能
+        * config_version配置项云端并没有
+= 2021.1.7 周四 =
+* Bug 185214 - [GWN7615_WPA3]WPA encryption type is configured as GCMP-128 or CCMP-256,does not take effect
+    * gsconfig uci2dat gscheckwifi中MTK未添加GCMP128和CCMP256的支持
+* Bug 184880 - [GWN7615_SSIDs]In the SSID, security mode is WPA2/WPA3, WPA key mode is 802.1x, AKMP Suite OUI value is missing 00-of-AC-05
+    * 分析协议，些AKM为11w协议添加，当11w为required时，强制使用sha256
+    * 而wpa2/wpa3安全模式下时，11w强制为optional，则可以不携带
+* Bug 179279 - [GWN7600 HS20][HZ] the osu client couldn't associate to the osen ssid on GWN7600
+    * 问题还可以复现 未去定位
+* 会议 2hours
+* Bug 182914 - [GWN7660 mesh]Sometimes captive portal can't take effect on re ap's 5G ssid.
+    * 问题已复现
+    * 尝试注释部分account中的代码，以定位问题
+= 2021.1.8 周五 =
+* Bug 182914 - [GWN7660 mesh]Sometimes captive portal can't take effect on re ap's 5G ssid.
+    * 定位为在ubus event回调函数中调用ubus_lookup_id引起envent事件乱序
+    * 更换为system系统调用，问题消失
+    * 测试时出现重启设备后，mesh无法正常连接
+* 周会 1小时
+* Bug 183183 - [GWN7660_RRM]DCA adjusts the channel to the DFS channel 
+    * GWN7615 100信道可以正常使用，允许切换
+* DFS信道添加开关，禁止页面，及驱动和DCA启用DFS信道
+    * 代码分析
+* Bug 182430 - [GWN7660 mesh]Sometimes mesh topology displayed incorrect on master.
+    * 未开始
+
+= 2021.1.11 周一 =
+* DFS信道添加开关，禁止页面，及驱动和DCA启用DFS信道
+    * 代码分析
+* GWN7660 关闭2Gmesh
+    * https://192.168.120.245/#/c/212476/
+* Bug 185350 - [GWN7605_WPA3]Secure encryption mode in SSID is WPA2/WPA3-(SAE-PSK)-AES or WPA3-SAE-AES, which cannot be bridged successfully、
+    * 搭环境调试功能
+    * 分析代码发现为APCLI的SAE并未合入
+    * 下载新版本的MT7621的驱动，对比代码
+= 2021.1.12 周二 =
+* Bug 185350 - [GWN7605_WPA3]Secure encryption mode in SSID is WPA2/WPA3-(SAE-PSK)-AES or WPA3-SAE-AES, which cannot be bridged successfully、
+    * 搭环境调试功能
+    * 分析代码发现为APCLI的SAE并未合入
+    * 下载新版本的MT7621的驱动，对比代码
+* gwn7660 hs20
+    * 搭环境测试，功能生效，icon显示不正确
+    * 修改并上库
+
+= 2021.1.13 周三 =
+* WPA3联盟认证
+    * PMF下发送错误加密的Deauth帧，客户端会被T下线
+        * 尝试修改驱动将主动发送加密Deauth
+        * 测试那边后来用原版本测试通过，非问题
+    * WPA2 4.2.1 RSNIE填充部分为空
+        * 校验问题
+
+= 2021.1.14 周四 =
+* WPA3联盟认证
+    * SAE anti-clogging 不生效
+        * 认证发送太晚，导致原有连接超时。
+        * 修改超时时间为30秒
+* GWN7605 19.15版本 SSID vlan情况下无法获取IP地址
+    * oem交换机问题，本地搭建环境是正常的
+    * 测试将AP直接7000后变为正常
+* 测试提出 NAT + WPA3-192 + GCMP256 的SSID不广播
+    * 备用radius密钥为空引起
+* GWN7660 hs20 测试
+    * 测试出现无法连接，远程分析
+    * 修改hs20的配置后设备SSID无法up
+    * 原因是hs20脚本中调用hostap_setup时，参数错误 athores->nl80211
+
+= 2021.1.15 周五 =
+* Bug 185930 - [GWN7605 ssid][HZ] After disable ssid then enable， the 8021xd process didn't startup
+    * GWN7605会默认创建一个2G的SSID
+    * 而默认配置中未添加备份RADIUS的配置，DBDC模式会合并配置引起5G RADIUS_server无法正确读取
+* 测试出现mesh下行接口无法Up
+    * 分析日志应该是在ACS触发后接口被bringdown引起ACS事件未触发，up未处理
+    * 本地搭环境尝试复现
+    * 添加日志发到测试帮忙复现
+* mesh存在连接慢的问题
+    * 可能是扫描时未将mesh结果添加到链表头部引起
+
+= 2021.1.18 周一 =
+* mesh存在连接慢的问题
+    * 可能是扫描时未将mesh结果添加到链表头部引起
+    * 驱动修改，发送给测试复现
+    * 驱动使用64大小的hash表，无法插入到列表前，尝试在读取时读取两次，优先读取带gs,gsmesh,gsoui_11k的ie的设备，再读取其它设备
+* 周例会 1小时
+* Bug 185350 - [GWN7605_WPA3]Secure encryption mode in SSID is WPA2/WPA3-(SAE-PSK)-AES or WPA3-SAE-AES, which cannot be bridged successfully、
+    * 从新驱动中将代码合入到原有驱动
+
+= 2021.1.19 周二 =
+* Bug 185350 - [GWN7605_WPA3]Secure encryption mode in SSID is WPA2/WPA3-(SAE-PSK)-AES or WPA3-SAE-AES, which cannot be bridged successfully、
+    * 合入后，编译测试
+    * 存在问题，预添加结点后（旧版本没有此逻辑），收包流程判断wdev状态非ready
+* rrm消息合并（未处理）
+* rrm邻居master检查（未处理）
+    * 在gs_neighbor的ie中，使用rssi和power字段发送masterID,并进行比对后上报
+
+= 2021.1.20 周三 =
+* GWN7660 2G 桥接失败
+    * iwlist ath0 scan 无结果
+    * 使用复位命令：iwpriv wifi0 pdev_reset 1/2/3/4/5 均无效
+    * 更换设备后测试正常
+* GWN7660 mesh连接GWN7630 - 田波鹏
+    * 空口抓包 7660未回应2/4
+    * 可能是GWN7660 wpa_supplicant未能正常接收1/4
+    * ovs-vsctl list bridge // stp关闭
+    * /etc/init.d/hyd stop //hyd关闭
+    * ovs-dpctl dump-flows //没有相关dp流产生
+    * wpa_supplicant无法正常接收1/4帧
+    * ps发现进程存在文件锁为network和lbd脚本产生
+* 2.4G被chd调整到19dBm，之后无终端连接，邻居AP中rssi最小的都大于-80dBm，但tpc为未进行调整
+    * 日志分析
+    * 无问题
+
+= 2021.1.21 周四 =
+* Bug 185942 - [GWN Manager_SSID]Security mode for WPA3, support 802.11W wireless terminal cannot successfully roaming
+    * 未开始
+* Bug 185943 - [GWN7660 mesh]REAP's mesh connection failed.
+    * 读取两次，优先读取
+* Bug 186334 - [GWN Cloud_ Insight]Scanned AP encryption mode is WPA3 related,display incorrectly
+    * 驱动已将rsnie上传到nbrd,只需nbrd解析rsnie即可
+
+= 2021.1.22 周五 =
+* Bug 186334 - [GWN Cloud_ Insight]Scanned AP encryption mode is WPA3 related,display incorrectly
+    * 完成已上库
+* Bug 185942 - [GWN Manager_SSID]Security mode for WPA3, support 802.11W wireless terminal cannot successfully roaming
+    * WPA3开启时已禁用11r功能
+    * WPA3/8021x认证时支持开启11r
+    * web修改开启企业语音功能后，无法立即生效，分析代码后发现应该会立即生效
+    * 添加日志后问题消失，换回原来的mt_wifi.ko也消失
+    * 未再复现
+        * 怀疑点：
+            - 小CPU未处理更新beacon操作
+            - gsconfig未更新wireless配置文件
+* 周会 0.5小时
+* Bug 184029 - [GWN Cloud_SSIDs]Encryption mode is WPA3-SAE, the password is 64 hexadecimal characters, the terminal cannot be associated
+    * ssid可以正常UP
+    * 使用苹果手机连接时不会发出auth帧
+    * WPA3 sae不支持配置64个hex字符的密钥，只可以配置63位的ascii码
+    * 页面可以对应做下限制
+    * hostapd中使用变量不同
+        * wpa_psk // 64位hex
+        * wpa_passphrase //8~63位的共享密钥
+
+= 2021.1.25 周一 =
+* Bug 186681 - [GWN Cloud_RRM]Manufacturing GWN7600LR 2.4g and 5G busy, SAMPLE_CNT value is always 0
+    * 分析日志
+    * 日志为MTK平台的日志，与问题单描述不符
+* Bug 186399 - [GWN7660 Mesh]CAP cannot receive RE2's DB DESC packet properly
+    * 未复现
+* GWN7630出现获取不到ip地址的问题 - 周西平
+    * 抓不到AP的dhcp报文
+    * 连接的Client可以正常访问网络
+    * POE口PORT2
+    * 更换网线问题消失
