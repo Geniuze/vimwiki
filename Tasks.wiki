@@ -193,3 +193,4 @@
 * rrm邻居master检查
 * hotspot ssid无法正常连接
     * radius报文端口不正确，配置为18120端口，实际发送为1812端口
+    * MTK驱动读取RADIUS_Port时，是根据RADIUS_Server的个数读取，如果备份为0，则只会读取1个端口，备份端口被下一个SSID读取
