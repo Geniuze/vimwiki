@@ -199,3 +199,5 @@
     * MTK驱动读取RADIUS_Port时，是根据RADIUS_Server的个数读取，如果备份为0，则只会读取1个端口，备份端口被下一个SSID读取
     * Interworking no match no network // 报错
     * 搭环境复现
+    * 因为备份radius的问题，非正常radius端口认证会有问题
+    * 徐皓处理
