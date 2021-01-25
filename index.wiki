@@ -1,4 +1,6 @@
 = Infos =
     * [[Base]] -- Base infomation for working
     * [[Tasks]] -- thines to be done
+= Self =
+    * [[Users]] -- user and password saved
 
