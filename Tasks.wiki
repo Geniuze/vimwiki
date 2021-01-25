@@ -186,7 +186,8 @@
 * Bug 186399 - [GWN7660 Mesh]CAP cannot receive RE2's DB DESC packet properly
     * 未复现
     * 测试复现， 上行RE AP换来换去，然后重启2个RE
-    * 
+    * mesh0接口未up
+    * lbd: telnet 127.0.0.1:7787 > dbg here
 * GWN7630出现获取不到ip地址的问题 - 周西平
     * 抓不到AP的dhcp报文
     * 连接的Client可以正常访问网络
