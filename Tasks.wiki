@@ -190,3 +190,5 @@
     * 连接的Client可以正常访问网络
     * POE口PORT2
     * 更换网线问题消失
+* rrm邻居master检查
+    * 
