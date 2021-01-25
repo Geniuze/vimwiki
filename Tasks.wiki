@@ -191,4 +191,5 @@
     * POE口PORT2
     * 更换网线问题消失
 * rrm邻居master检查
-    * 
+* hotspot ssid无法正常连接
+    * radius报文端口不正确，配置为18120端口，实际发送为1812端口
