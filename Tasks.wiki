@@ -182,7 +182,7 @@
 = 2021.1.25 周一 =
 * Bug 186681 - [GWN Cloud_RRM]Manufacturing GWN7600LR 2.4g and 5G busy, SAMPLE_CNT value is always 0
     * 分析日志
-    * 日志为MTK平台的日志，与问题单描述不符
+    * 日志为MTK平台的日志，与问题单描述不符，谢湖休假
 * Bug 186399 - [GWN7660 Mesh]CAP cannot receive RE2's DB DESC packet properly
     * 未复现
     * 测试复现， 上行RE AP换来换去，然后重启2个RE
@@ -201,3 +201,6 @@
     * 搭环境复现
     * 因为备份radius的问题，非正常radius端口认证会有问题
     * 徐皓处理
+= 2021.1.26 周二 =
+* Bug 186874 - [GWN7660_11k] No other AP info in the AP neighbor report
+    * 
