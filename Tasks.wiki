@@ -203,4 +203,6 @@
     * 徐皓处理
 = 2021.1.26 周二 =
 * Bug 186874 - [GWN7660_11k] No other AP info in the AP neighbor report
-    * 
+
+* Bug 186322 - [GWN7660 mesh]Sometimes reap didn't broadcast mesh interface.
+    * 添加日志后尝试复现
