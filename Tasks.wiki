@@ -206,3 +206,6 @@
 
 * Bug 186322 - [GWN7660 mesh]Sometimes reap didn't broadcast mesh interface.
     * 添加日志后尝试复现
+= 2021.1.27 周三 =
+* Bug 186322 - [GWN7660 mesh]Sometimes reap didn't broadcast mesh interface.
+    * 尝试不停切换上行CAP进行复现
