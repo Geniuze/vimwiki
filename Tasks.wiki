@@ -209,3 +209,26 @@
 = 2021.1.27 周三 =
 * Bug 186322 - [GWN7660 mesh]Sometimes reap didn't broadcast mesh interface.
     * 尝试不停切换上行CAP进行复现
+    * 栈信息: 设置信道时会down掉所有的ssid,但是mesh0接口acs正在处理，down掉后无法正常up
+[   68.988304] CPU: 3 PID: 2258 Comm: hostapd Tainted: P                4.4.60 #1
+[   68.998016] Hardware name: Qualcomm Technologies, Inc. IPQ6018/AP-CP03-C1 (DT)
+[   69.005307] Call trace:
+[   69.012513] [<ffffffc0000890c4>] dump_backtrace+0x0/0x128
+[   69.014856] [<ffffffc000089200>] show_stack+0x14/0x1c
+[   69.020412] [<ffffffc000251878>] dump_stack+0x94/0xb4
+[   69.027005] [<ffffffbffd5e8a6c>] wlan_mlme_stop_vdev+0x74/0xf0 [umac]
+[   69.031986] [<ffffffbffd461398>] ieee80211_ucfg_set_freq_internal+0x1b8/0x6b8 [umac]
+[   69.038404] [<ffffffbffd4618f4>] ieee80211_ucfg_set_freq+0x5c/0xc0 [umac]
+[   69.046247] [<ffffffbffd55a130>] wlan_cfg80211_start_ap+0x290/0x4e0 [umac]
+[   69.051494] [<ffffffbffc12b830>] nl80211_start_ap+0x4f8/0x5e0 [cfg80211]
+[   69.058178] [<ffffffc000483314>] genl_family_rcv_msg+0x254/0x2bc
+[   69.065030] [<ffffffc0004833c4>] genl_rcv_msg+0x48/0x6c
+[   69.071018] [<ffffffc000482530>] netlink_rcv_skb+0x5c/0xc4
+[   69.075966] [<ffffffc0004830ac>] genl_rcv+0x34/0x48
+[   69.081519] [<ffffffc000481f50>] netlink_unicast+0x128/0x1dc
+[   69.086296] [<ffffffc000482384>] netlink_sendmsg+0x2bc/0x2dc
+[   69.092202] [<ffffffc00043cd68>] sock_sendmsg+0x18/0x2c
+[   69.097841] [<ffffffc00043d3bc>] ___sys_sendmsg+0x1bc/0x248
+[   69.102789] [<ffffffc00043e24c>] __sys_sendmsg+0x40/0x68
+[   69.108345] [<ffffffc00043e284>] SyS_sendmsg+0x10/0x20
+[   69.113902] [<ffffffc000085db0>] el0_svc_naked+0x24/0x28
