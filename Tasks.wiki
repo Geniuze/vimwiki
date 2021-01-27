@@ -210,6 +210,8 @@
 * Bug 186322 - [GWN7660 mesh]Sometimes reap didn't broadcast mesh interface.
     * 尝试不停切换上行CAP进行复现
     * 栈信息: 设置信道时会down掉所有的ssid,但是mesh0接口acs正在处理，down掉后无法正常up
+    * 问题原因：当mesh0接口添加ACS扫描时，acs_in_progress为true,但实际上ACS已经执行post_events并返回，acs_in_progress值未及时修改
+    * 偶现原因：正常情况下会在ath1接口的ACS回调之前加入mesh0接口的ACS，此时会两个接口同时返回完成事件，出问题时ath1的ACS已经返回，但是mesh0添加时判断状态为未返回
 [   68.988304] CPU: 3 PID: 2258 Comm: hostapd Tainted: P                4.4.60 #1
 [   68.998016] Hardware name: Qualcomm Technologies, Inc. IPQ6018/AP-CP03-C1 (DT)
 [   69.005307] Call trace:
