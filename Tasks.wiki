@@ -234,3 +234,6 @@
 [   69.102789] [<ffffffc00043e24c>] __sys_sendmsg+0x40/0x68
 [   69.108345] [<ffffffc00043e284>] SyS_sendmsg+0x10/0x20
 [   69.113902] [<ffffffc000085db0>] el0_svc_naked+0x24/0x28
+= 2021.1.28 周四 =
+* Bug 184029 - [GWN Cloud_SSIDs]Encryption mode is WPA3-SAE, the password is 64 hexadecimal characters, the terminal cannot be associated
+    * 继续调试
