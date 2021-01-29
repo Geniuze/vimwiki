@@ -104,6 +104,7 @@
     * 测试出现无法连接，远程分析
     * 修改hs20的配置后设备SSID无法up
     * 原因是hs20脚本中调用hostap_setup时，参数错误 athores->nl80211
+    * https://192.168.120.245/#/c/208849/
 
 = 2021.1.15 周五 =
 * Bug 185930 - [GWN7605 ssid][HZ] After disable ssid then enable， the 8021xd process didn't startup
@@ -121,6 +122,7 @@
     * 可能是扫描时未将mesh结果添加到链表头部引起
     * 驱动修改，发送给测试复现
     * 驱动使用64大小的hash表，无法插入到列表前，尝试在读取时读取两次，优先读取带gs,gsmesh,gsoui_11k的ie的设备，再读取其它设备
+    * Bug 185943 - [GWN7660 mesh]REAP's mesh connection failed.
 * 周例会 1小时
 * Bug 185350 - [GWN7605_WPA3]Secure encryption mode in SSID is WPA2/WPA3-(SAE-PSK)-AES or WPA3-SAE-AES, which cannot be bridged successfully、
     * 从新驱动中将代码合入到原有驱动
@@ -236,10 +238,10 @@
 [   69.108345] [<ffffffc00043e284>] SyS_sendmsg+0x10/0x20
 [   69.113902] [<ffffffc000085db0>] el0_svc_naked+0x24/0x28
 = 2021.1.28 周四 =
-* Bug 184029 - [GWN Cloud_SSIDs]Encryption mode is WPA3-SAE, the password is 64 hexadecimal characters, the terminal cannot be associated
+* Bug 185350 - [GWN7605_WPA3]Secure encryption mode in SSID is WPA2/WPA3-(SAE-PSK)-AES or WPA3-SAE-AES, which cannot be bridged successfully、
     * 继续调试
 = 2021.1.29 周五 =
-* Bug 184029 - [GWN Cloud_SSIDs]Encryption mode is WPA3-SAE, the password is 64 hexadecimal characters, the terminal cannot be associated
+* Bug 185350 - [GWN7605_WPA3]Secure encryption mode in SSID is WPA2/WPA3-(SAE-PSK)-AES or WPA3-SAE-AES, which cannot be bridged successfully、
     * 完成
 * 当11w=1时需要支持AKM=5和6
 * 周会 0.5hour
