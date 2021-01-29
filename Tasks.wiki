@@ -31,6 +31,7 @@
         * https://192.168.120.245/#/c/211914/1
     * Radius REJECT 消息携带185
         * 添加185属性解析，并将reason下发到驱动并放到deauth中
+        * https://192.168.120.245/#/c/212013/
 = 2021.1.6 周三 =
 * WPA3联盟认证
     * radius认证 ipv6支持
@@ -241,3 +242,4 @@
 * Bug 184029 - [GWN Cloud_SSIDs]Encryption mode is WPA3-SAE, the password is 64 hexadecimal characters, the terminal cannot be associated
     * 完成
 * 当11w=1时需要支持AKM=5和6
+* 周会 0.5hour
