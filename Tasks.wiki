@@ -245,3 +245,15 @@
     * 完成
 * 当11w=1时需要支持AKM=5和6
 * 周会 0.5hour
+
+= 2021.2.1 周一 =
+* 当11w=1时需要支持AKM=5和6
+    * 测试功能无问题后上库
+
+* Bug 179901 - [GWN7600 mesh][HZ]Secondary RE AP could not be successfully associated with primary RE AP
+    * 与测试沟通
+* Bug 186754 - [GWN7660 11w][HZ] when ssid set wpa2/psk 11w required， the akm type shows 2 and 6
+    * MFPR与MFPC都开启时必须使用sha256生成Pmkid
+    * WpaDerivePTK ==> LEN_AES_PTK(48)
+    * RT_HMAC_SHA256 生成pmkid
+
