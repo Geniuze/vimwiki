@@ -256,4 +256,7 @@
     * MFPR与MFPC都开启时必须使用sha256生成Pmkid
     * WpaDerivePTK ==> LEN_AES_PTK(48)
     * RT_HMAC_SHA256 生成pmkid
+* 测试7660WPA3桥接能力
+    * WPA2/WPA3-PSK 与WPA3-PSK 可以正常桥接
+* SDN与openvswitch学习
 
