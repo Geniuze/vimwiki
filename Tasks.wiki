@@ -259,4 +259,8 @@
 * 测试7660WPA3桥接能力
     * WPA2/WPA3-PSK 与WPA3-PSK 可以正常桥接
 * SDN与openvswitch学习
+* Bug 185682 - [GWN Manager_SSIDs]Security mode is WPA3-192 , Portal could not successfully authenticate
 
+= 2021.2.2 周二 =
+* Bug 185682 - [GWN Manager_SSIDs]Security mode is WPA3-192 , Portal could not successfully authenticate
+    * hostapd初始化因加密类型不识别引起初始化失败，netlink未初始化
