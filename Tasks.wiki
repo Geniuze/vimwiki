@@ -264,3 +264,4 @@
 = 2021.2.2 周二 =
 * Bug 185682 - [GWN Manager_SSIDs]Security mode is WPA3-192 , Portal could not successfully authenticate
     * hostapd初始化因加密类型不识别引起初始化失败，netlink未初始化
+* 阅读openvswitch文档与操作
