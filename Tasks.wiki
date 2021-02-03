@@ -265,4 +265,11 @@
 * Bug 185682 - [GWN Manager_SSIDs]Security mode is WPA3-192 , Portal could not successfully authenticate
     * hostapd初始化因加密类型不识别引起初始化失败，netlink未初始化
 * 阅读openvswitch文档与操作
+    * PC搭建ovs环境
 * 聚餐
+
+= 2021.2.3 周三 =
+* 阅读openvswitch文档与操作
+    * ovs-ofctl -OOpenFlow13 --names --no-stat dump-flows br0 | sed 's/cookie=0x5adc15c0, //'
+    * priority=9000,in_port=p3,vlan_tci=0x0000/0x1fff actions=push_vlan:0x8100,set_field:4196->vlan_vid,goto_table:1
+        * set_field:4196 ===> vlan_field = 0x1000 | vlan_id
