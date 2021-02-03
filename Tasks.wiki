@@ -271,5 +271,11 @@
 = 2021.2.3 周三 =
 * 阅读openvswitch文档与操作
     * ovs-ofctl -OOpenFlow13 --names --no-stat dump-flows br0 | sed 's/cookie=0x5adc15c0, //'
+    * ovs-ofctl -OOpenFlow13 --no-names --sort dump-flows br0 > flows1
+    * ovs-ofctl -OOpenFlow13 diff-flows flows1 br0 | sed 's/cookie=0x5adc15c0 //'
     * priority=9000,in_port=p3,vlan_tci=0x0000/0x1fff actions=push_vlan:0x8100,set_field:4196->vlan_vid,goto_table:1
         * set_field:4196 ===> vlan_field = 0x1000 | vlan_id
+    * ovs-appctl ofproto/trace br0 in_port=p1
+    * ovs-appctl ofproto/trace br0 in_port=p1,dl_src=00:11:11:00:00:00,dl_dst=00:22:22:00:00:00 -generate
+    * ovs-appctl ofproto/trace br0 in_port=p1,dl_src=00:01:02:03:04:05,dl_dst=ff:ff:ff:ff:ff:ff,dl_type=0x806,arp_spa=10.100.0.1,arp_tpa=10.100.0.254,arp_sha=00:01:02:03:04:05,arp_tha=ff:ff:ff:ff:ff:ff,arp_op=1 -generate
+
