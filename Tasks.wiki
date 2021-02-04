@@ -291,5 +291,6 @@
     * ovs-ofctl add-flow br-int table=1,ip,nw_src=10.1.0.1,nw_dst=10.1.0.20,actions=mod_dl_src:"02:ac:10:ff:05:01",mod_dl_dst:"02:ac:10:ff:01:31",vm2
     * ovs-ofctl add-flow br-int table=1,ip,nw_dst=10.0.0.10,actions=mod_dl_src:"02:ac:10:ff:01:01",mod_dl_dst:"02:ac:10:ff:01:30",vm1
 
-
+= 2020.2.4 周四 =
+* rrm邻居master检查
 
