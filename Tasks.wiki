@@ -312,4 +312,22 @@
     * 尝试重新配置信道无效
     * 执行wifi重启后mesh可以正常连接
     * 阅读MTK手册，看相关的功能命令，尝试重新配置部分功能，看是否可以正常连接
+    * [ 1855.832000] Call Trace:
+[ 1855.836000] [<8100aa1c>] show_stack+0x48/0x70
+[ 1855.844000] [<c59b17b8>] dev_rx_mgmt_frm+0x98/0x764 [mt_wifi]
+[ 1855.856000] [<c59b5598>] rx_packet_process+0xc4/0x104 [mt_wifi]
+[ 1855.872000] [<c59b597c>] rtmp_rx_done_handle+0x3a4/0x4a8 [mt_wifi]
+[ 1855.884000] [<c5a0ff68>] tr_done_tasklet+0x10c/0x2b0 [mt_wifi]
+[ 1855.896000] [<81030c14>] tasklet_hi_action+0x15c/0x270
+[ 1855.904000] [<810310b4>] __do_softirq+0x11c/0x220
+[ 1855.916000] [<810314dc>] irq_exit+0x64/0x80
+[ 1855.924000] [<810053f0>] ret_from_irq+0x0/0x4
+[ 1855.932000] [<810070c8>] __pastwait+0x0/0x8
+[ 1855.940000] [<810652a8>] cpu_startup_entry+0x10c/0x164
 * GWN7660使用11.2版本的驱动代码mesh测试
+
+= 2020.2.7 周一 =
+* GWN7630 MESH无法连接到7600
+    * 无法通过正常途径恢复，修改gscheckwifi，修改信道带宽时进行wifi reload
+    * Bug 187810 - [GWN7630 Mesh][HZ] After some configurtion, RE in office Wi-Fi couldn't online
+* 7660旧驱动更改合入到新驱动中
