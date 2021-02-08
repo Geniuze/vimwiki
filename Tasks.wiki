@@ -331,3 +331,7 @@
     * 无法通过正常途径恢复，修改gscheckwifi，修改信道带宽时进行wifi reload
     * Bug 187810 - [GWN7630 Mesh][HZ] After some configurtion, RE in office Wi-Fi couldn't online
 * 7660旧驱动更改合入到新驱动中
+* Bug 187885 - [GWN76xx mesh][HZ]The role of RE AP should be switched to CAP immediately after the network is restored
+    * 搭建环境复现，未复现2分钟的问题
+* Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
+    * 
