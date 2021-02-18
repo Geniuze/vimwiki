@@ -347,7 +347,8 @@
 = 2020.2.18 周四 =
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
     * 分析gsmesh的代码
-    * gsmesh -----> network reload ----if wireless modified---> wifi reload
-    * wifi reload -------> gsmesh restart
-    * gsmesh --init
+    * gsmesh                      -------> network reload ----if wireless modified---> wifi reload
+    * wifi reload                 -------> /etc/init.d/mesh restart
+    * /etc/init.d/mesh init_once/init -------> gsmesh --init
+    * /etc/init.d/network running -------> /etc/init.d/mesh --init_once
 
