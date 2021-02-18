@@ -326,7 +326,7 @@
 [ 1855.940000] [<810652a8>] cpu_startup_entry+0x10c/0x164
 * GWN7660使用11.2版本的驱动代码mesh测试
 
-= 2020.2.7 周一 =
+= 2020.2.8 周一 =
 * GWN7630 MESH无法连接到7600
     * 无法通过正常途径恢复，修改gscheckwifi，修改信道带宽时进行wifi reload
     * Bug 187810 - [GWN7630 Mesh][HZ] After some configurtion, RE in office Wi-Fi couldn't online
@@ -334,4 +334,20 @@
 * Bug 187885 - [GWN76xx mesh][HZ]The role of RE AP should be switched to CAP immediately after the network is restored
     * 搭建环境复现，未复现2分钟的问题
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
-    * 
+
+= 2020.2.9 周二 =
+* Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
+    * 本地搭建环境尝试复现，很难复现
+    * 分析gsmesh的代码
+
+= 2020.2.10 周三 =
+* Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
+    * 分析gsmesh的代码
+
+= 2020.2.18 周四 =
+* Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
+    * 分析gsmesh的代码
+    * gsmesh -----> network reload ----if wireless modified---> wifi reload
+    * wifi reload -------> gsmesh restart
+    * gsmesh --init
+
