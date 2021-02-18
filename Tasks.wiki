@@ -351,4 +351,7 @@
     * wifi reload                 -------> /etc/init.d/mesh restart
     * /etc/init.d/mesh init_once/init -------> gsmesh --init
     * /etc/init.d/network running -------> /etc/init.d/mesh --init_once
+    * gsmesh检测到br-lan0_ex存在ipv6地址，自动切换为CAP
+    * Bug 142318 - [GWN7610 Mesh]AP connect with ethernet cable and AP don't have ipv4 address,only have ipv6 address, AP's role is RE and cause loop in network
+        * 为解决IPv6环境下的mesh问题引入在IPv4+IPv6环境下，net口接PC会触发设备切换到CAP
 
