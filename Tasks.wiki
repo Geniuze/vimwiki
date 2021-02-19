@@ -356,3 +356,9 @@
         * 为解决IPv6环境下的mesh问题引入在IPv4+IPv6环境下，net口接PC会触发设备切换到CAP
     * 考虑在gssniff进程中添加Router Advertisement检测，如果eth0口可以接收到Router Advertisement则切换为CAP与dhcp逻辑相同
 
+= 2020.2.18 周五 =
+* Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
+    * 编写代码，发送router solicitation报文
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 
+
