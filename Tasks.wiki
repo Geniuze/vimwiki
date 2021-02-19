@@ -360,5 +360,9 @@
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
     * 编写代码，发送router solicitation报文
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
-    * 
+    * wpa_cli roam xx:xx:xx:xx:xx:xx
+    * 复现方法
+        * 高通芯片的AP容易复现，MTK难以复现（曾经复现过）
+        * 存在大量数据通信（SIP CALL或者http下载数据）
+        * 两台AP需处于5G 且不同信道，信道带宽为80（36/48 或 149/161, 36/149未做测试）
 
