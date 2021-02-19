@@ -366,6 +366,8 @@
         * 存在大量数据通信（SIP CALL或者http下载数据）
         * 两台AP需处于5G 且不同信道，信道带宽为80（36/48 或 149/161, 36/149未做测试）
     * AP不回reassoc rsp,当station出现问题时，会发送大量的deauth到AP，下次漫游到该AP时，AP不再回复assoc rsp,具体原因待分析日志
+        * hostapd正常回应reassoc rsp报文，但是空口无包，没有出错日志
+        * iwpriv ath1 dbgLVL 0x80C00000 // 打开mlme以及auth,assoc过程的日志
 * 删除文件中的0x00
     * sed -i "s/\x00//g" file.log
 
