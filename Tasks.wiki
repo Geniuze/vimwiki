@@ -377,3 +377,15 @@
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 与测试沟通复现方法与打开驱动日志
     * 分析抓包，使用拉距方式进行漫游，未出现不回reassoc rsp的情况
+* 80211.h协议驱动功能
+    * ipq4018:
+        * IEEE80211_ELEMID_PWRCNSTR=32
+        * iwpriv ath0 get_vap_doth
+        * iwpriv ath0 vap_doth 1
+        * 高通默认未添加Power ConstraintIE
+    * mt7621:
+        * IE_POWER_CONSTRAINT=32
+        * iwpriv athi0 show apcfginfo ; dmesg -c | grep IEEE80211H
+        * iwpriv athi0 show rrminfo ; dmesg -c | grep "Power Constraint"
+        * MTK默认在5G频段添加Power ConstraintIE，但是填充值为0
+
