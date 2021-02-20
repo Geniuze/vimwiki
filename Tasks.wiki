@@ -371,3 +371,9 @@
 * 删除文件中的0x00
     * sed -i "s/\x00//g" file.log
 
+= 2020.2.19 周六 =
+* Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
+    * 编写代码，发送router solicitation报文
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 与测试沟通复现方法与打开驱动日志
+    * 分析抓包，使用拉距方式进行漫游，未出现不回reassoc rsp的情况
