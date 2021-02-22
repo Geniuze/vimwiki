@@ -356,7 +356,7 @@
         * 为解决IPv6环境下的mesh问题引入在IPv4+IPv6环境下，net口接PC会触发设备切换到CAP
     * 考虑在gssniff进程中添加Router Advertisement检测，如果eth0口可以接收到Router Advertisement则切换为CAP与dhcp逻辑相同
 
-= 2020.2.18 周五 =
+= 2020.2.19 周五 =
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
     * 编写代码，发送router solicitation报文
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
@@ -371,7 +371,7 @@
 * 删除文件中的0x00
     * sed -i "s/\x00//g" file.log
 
-= 2020.2.19 周六 =
+= 2020.2.20 周六 =
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
     * 编写代码，发送router solicitation报文
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
@@ -389,3 +389,9 @@
         * iwpriv athi0 show rrminfo ; dmesg -c | grep "Power Constraint"
         * MTK默认在5G频段添加Power ConstraintIE，但是填充值为0
 
+= 2020.2.22 周六 =
+* Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
+    * 编写na报文的接收处理
+* ap在纯ipv6环境下，终端访问ipv6地址不会弹portal -- 楼晨晨
+    * 客户端使用IPv4进行dns解析，导到获取到的地址为1.1.1.1,而接口br-lan0_ex不存在ipv4地址，ovs流转换后无法正常通信
+    * 关闭客户机上的IPv4地址，则可以正常弹portal
