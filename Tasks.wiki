@@ -395,3 +395,7 @@
 * ap在纯ipv6环境下，终端访问ipv6地址不会弹portal -- 楼晨晨
     * 客户端使用IPv4进行dns解析，导到获取到的地址为1.1.1.1,而接口br-lan0_ex不存在ipv4地址，ovs流转换后无法正常通信
     * 关闭客户机上的IPv4地址，则可以正常弹portal
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * AP出现回应Reassociate response中status code=65535
+    * hostapd日志显示：FT: ANonce mismatch in FTIE
+    * 分析报文为Reassociate Request在两次Auth回应之间，引起客户端与AP的随机ANonce值不同
