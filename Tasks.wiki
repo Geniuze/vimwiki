@@ -387,11 +387,14 @@
         * IE_POWER_CONSTRAINT=32
         * iwpriv athi0 show apcfginfo ; dmesg -c | grep IEEE80211H
         * iwpriv athi0 show rrminfo ; dmesg -c | grep "Power Constraint"
-        * MTK默认在5G频段添加Power ConstraintIE，但是填充值为0
+        * MTK默认在5G频段添加Power ConstraintIE，但是填充值为-1
 
 = 2020.2.22 周六 =
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
     * 编写na报文的接收处理
+    * 代码编写完成，测试时出现问题
+        * ra报文为组播报文，从mesh接口接收到的ra报文在eth0口仍然可以正常抓到，无法判断是从eth0口发出还是发向eth0口
+        * 考虑使用ns报文再次从eth0口请求路由邻居，na报文为单播包可以判断是否是发送给自己
 * ap在纯ipv6环境下，终端访问ipv6地址不会弹portal -- 楼晨晨
     * 客户端使用IPv4进行dns解析，导到获取到的地址为1.1.1.1,而接口br-lan0_ex不存在ipv4地址，ovs流转换后无法正常通信
     * 关闭客户机上的IPv4地址，则可以正常弹portal
