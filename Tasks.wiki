@@ -411,3 +411,9 @@
     * gsmesh需要配置debug_level全局变量，携带debug编译参数
     * gssniff携带debug编译参数
     * SIOCGIFFLAGS ioctl获取的flags中IFF_RUNNING位被置1,实际swconfig dev switch0 show结果显示0和7端口是up，其它端口均为down
+    * 确认为旧板子，怀h疑可能是板子问题
+    * 版本回退到1.0.3.2,依然存在问题
+* 公司网络一台AP的5G功率为22db，引起大量客户端连接到此AP -- 张丽君
+    * 172.16.0.18 -- GWN Manager
+    * root/12341234
+* 
