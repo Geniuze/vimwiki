@@ -405,7 +405,9 @@
 
 = 2020.2.22 周二 =
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
-    * 编写发送ns与接收na的处理，测试正常
+    * 编写发送ns与接收na的处理，测试
+    * 测试中发现当两个net口均接有网线时，拔掉POE供电口的网线，eth0会出现2-3秒左右的非RUNNING状态，引起gsmesh判断错误，直接切换为RE
+        * 内核添加调试信息
 * 测试提出MESH角色切换存在10分钟的延时 --- 周西平
     * 编译debug版本的gsmesh与gssniff
     * gsmesh需要配置debug_level全局变量，携带debug编译参数
