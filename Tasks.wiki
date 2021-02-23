@@ -410,3 +410,4 @@
     * 编译debug版本的gsmesh与gssniff
     * gsmesh需要配置debug_level全局变量，携带debug编译参数
     * gssniff携带debug编译参数
+    * SIOCGIFFLAGS ioctl获取的flags中IFF_RUNNING位被置1,实际swconfig dev switch0 show结果显示0和7端口是up，其它端口均为down
