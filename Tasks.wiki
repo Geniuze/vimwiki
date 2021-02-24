@@ -425,7 +425,7 @@
 
 = 2020.2.24 周三 =
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
-    * 修复两个网线均插入网线，拔掉POE口的网线会造成2-3秒左右的eth0接口非RUNNING状态的问题
-    * 添加编译时gsmesh的debug信息
+    * 修复两个网线均插入网线，拔掉POE口的网线会造成2-3秒左右的eth0接口非RUNNING状态的问题 https://192.168.120.245/#/c/215255/
+    * 添加编译时gsmesh的debug信息 https://192.168.120.245/#/c/215256/
     * 代码提交上库
 
