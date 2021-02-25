@@ -439,5 +439,5 @@
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 再次提拱的日志未复现Reassociate Response失败的问题
     * 出现客户端auth request未回应的问题
-* 
+    * auth request中的PMKR0name携带错误，引起AP向R0KH发送PMKR1 pull,而R0KH中该PMKR0name也无法找到对应的sta，引起Auth request无回应
 
