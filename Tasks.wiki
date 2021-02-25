@@ -422,6 +422,7 @@
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * WP810测试时由于两个连续的auth处理引起Anonce不匹配的问题，在hostapd中规避此问题后提交测试复现
     * 分析驱动及hostapd中的代码，auth request的seq_ctrl字段未处理，引起重复处理相同的auth request，已修改提交测试复测
+    * https://192.168.120.245/#/c/214881/
 
 = 2020.2.24 周三 =
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
@@ -442,5 +443,6 @@
     * 再次提拱的日志未复现Reassociate Response失败的问题
     * 出现客户端auth request未回应的问题
     * auth request中的PMKR0name携带错误，引起AP向R0KH发送PMKR1 pull,而R0KH中该PMKR0name也无法找到对应的sta，引起Auth request无回应
+    * 17:27:32这个时间点接收到对应的auth-FT报文，只有在17：27：52这个时间点收到了auth-Open的正常关联请求。
 * Bug 188254 - [GWN7605_rrm]ACS report is empty， channel will not be adjusted
     * 搭环境复现，2G5G同时开启acs时，acs上报数据确实不正常
