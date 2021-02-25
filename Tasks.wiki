@@ -447,3 +447,7 @@
 * Bug 188254 - [GWN7605_rrm]ACS report is empty， channel will not be adjusted
     * 搭环境复现，2G5G同时开启acs时，acs上报数据确实不正常
     * 完成
+* Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal 
+    * 功率由固定修改为自动调整时，会配置为auto
+    * 配置为如果是auto则下发最大功率
+    * 问题单描述还有部分未清楚，明天来再询问
