@@ -446,3 +446,4 @@
     * 17:27:32这个时间点接收到对应的auth-FT报文，只有在17：27：52这个时间点收到了auth-Open的正常关联请求。
 * Bug 188254 - [GWN7605_rrm]ACS report is empty， channel will not be adjusted
     * 搭环境复现，2G5G同时开启acs时，acs上报数据确实不正常
+    * 完成
