@@ -432,6 +432,8 @@
     * 提供修复seq_ctrl的版本测试后发析日志发现AP会回复FTIE错误，原因为MIC校验失败具体原因未知，打开hexdump日志，再次复现分析密钥和报文内容
 * Bug 188326 - [GWN7660 mesh]REAP of MTK APs can't online on GWN7660.
     * 新版本驱动存在新的发送流程，为合入相关封包逻辑
+* Bug 188254 - [GWN7605_rrm]ACS report is empty， channel will not be adjusted
+    * 搭环境复现，2G5G同时开启acs时，acs上报数据确实不正常
 
 = 2020.2.25 周四 =
 * Bug 188326 - [GWN7660 mesh]REAP of MTK APs can't online on GWN7660.
@@ -440,4 +442,5 @@
     * 再次提拱的日志未复现Reassociate Response失败的问题
     * 出现客户端auth request未回应的问题
     * auth request中的PMKR0name携带错误，引起AP向R0KH发送PMKR1 pull,而R0KH中该PMKR0name也无法找到对应的sta，引起Auth request无回应
-
+* Bug 188254 - [GWN7605_rrm]ACS report is empty， channel will not be adjusted
+    * 搭环境复现，2G5G同时开启acs时，acs上报数据确实不正常
