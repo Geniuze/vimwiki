@@ -430,4 +430,14 @@
     * 代码提交上库
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 提供修复seq_ctrl的版本测试后发析日志发现AP会回复FTIE错误，原因为MIC校验失败具体原因未知，打开hexdump日志，再次复现分析密钥和报文内容
+* Bug 188326 - [GWN7660 mesh]REAP of MTK APs can't online on GWN7660.
+    * 新版本驱动存在新的发送流程，为合入相关封包逻辑
+
+= 2020.2.25 周四 =
+* Bug 188326 - [GWN7660 mesh]REAP of MTK APs can't online on GWN7660.
+    * 代码上库
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 再次提拱的日志未复现Reassociate Response失败的问题
+    * 出现客户端auth request未回应的问题
+* 
 
