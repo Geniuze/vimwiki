@@ -456,3 +456,8 @@
 * Bug 188224 - [GWN7660_rrm]GWN7660 does slave AP， master AP cannot get ACS report of GWN7660
     * 信道信息出错
     * wifitool工具非配置新驱动的工具，更新后正常
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 仍然会出现0xffff的assoc response响应
+    * 添加日志后帮助复现
+* Bug 187693 - [GWN7660][HZ] gwnmenu function is working abnormally.
+    * 本地未复现
