@@ -461,3 +461,5 @@
     * 添加日志后帮助复现
 * Bug 187693 - [GWN7660][HZ] gwnmenu function is working abnormally.
     * 本地未复现
+* Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal 
+    * 开启RRM后，同时修改信道和功率时有概率出现功率修改不成功，19.4版本未复现，可能是信道修改引起功率修改不生效
