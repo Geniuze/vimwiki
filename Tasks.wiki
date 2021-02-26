@@ -455,3 +455,4 @@
 = 2020.2.26 周五 =
 * Bug 188224 - [GWN7660_rrm]GWN7660 does slave AP， master AP cannot get ACS report of GWN7660
     * 信道信息出错
+    * wifitool工具非配置新驱动的工具，更新后正常
