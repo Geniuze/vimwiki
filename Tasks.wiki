@@ -402,6 +402,7 @@
     * AP出现回应Reassociate response中status code=65535
     * hostapd日志显示：FT: ANonce mismatch in FTIE
     * 分析报文为Reassociate Request在两次Auth回应之间，引起客户端与AP的随机ANonce值不同
+* 周会 0.5
 
 = 2020.2.23 周二 =
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
@@ -465,3 +466,12 @@
     * 开启RRM后，同时修改信道和功率时有概率出现功率修改不成功，19.4版本未复现，可能是信道修改引起功率修改不生效
     * 19.4版本也会复现
 * 周会 1小时
+
+
+= 2020.2.26 周五 =
+* Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal 
+    * 本地仍然无法复现
+    * 继续复现
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 0xffff的错误已经确认修复，现在MIC校验失败的问题仍然会出现，继续分析日志看两边的数据及报文中的数据有没有差异
+    * 
