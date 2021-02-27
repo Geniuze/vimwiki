@@ -422,7 +422,7 @@
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * WP810测试时由于两个连续的auth处理引起Anonce不匹配的问题，在hostapd中规避此问题后提交测试复现
     * 分析驱动及hostapd中的代码，auth request的seq_ctrl字段未处理，引起重复处理相同的auth request，已修改提交测试复测
-    * https://192.168.120.245/#/c/214881/
+    * https://192.168.120.245/#/c/215259/
 
 = 2020.2.24 周三 =
 * Bug 187863 - [GWN7660 mesh][HZ] After the net port of the RE is connected to the PC, the mesh role should not be switched to CAP
