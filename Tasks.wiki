@@ -490,3 +490,6 @@
     * 尝试复现
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 目前测试无法再次复现，等待测试更换环境
+* 7660  mesh扫描
+    * iwpriv mesh0 qdf_cv_lvl 0x00150008 // scm_debug
+    * iwpriv mesh0 g_qdf_cv_lvl
