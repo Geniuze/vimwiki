@@ -474,4 +474,17 @@
     * 继续复现
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 0xffff的错误已经确认修复，现在MIC校验失败的问题仍然会出现，继续分析日志看两边的数据及报文中的数据有没有差异
-    * 
+    * 等待wpa_supplicant添加日志
+
+= 2020.2.27 周六 =
+* Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal 
+    * 分析日志和抓包，仍然是MIC校验失败的问题
+    * 修复auth seq未处理的问题之后复现的概率明显变低，后续问题是否仍需要解决不明确
+* Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal 
+    * 本地尝试复现此问题
+* 写禅道
+
+= 2020.3.1 周一 =
+* 请假半天
+* Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal
+    * 尝试复现
