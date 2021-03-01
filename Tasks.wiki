@@ -495,3 +495,4 @@
     * iwpriv mesh0 g_qdf_cv_lvl
     * RE切换角色后，一段时间之内无法正常扫描到周围的5G SSID，只能扫到 36 44 48这几个信道的SSID，而且数据不超过10个
     * dfs_init_precac_list
+    * 怀疑是dfs的precac功能需要等待DFS检测完成后才可以切换到DFS信道进行扫描
