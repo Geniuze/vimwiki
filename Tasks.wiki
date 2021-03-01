@@ -488,3 +488,5 @@
 * 请假半天
 * Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal
     * 尝试复现
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 目前测试无法再次复现，等待测试更换环境
