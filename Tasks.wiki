@@ -504,10 +504,13 @@
     * 继续分析dfs的流程
     * precac功能并未开启
     * 本地无法复现，测试必现，分析后发现测试环境设备acs选择的是dfs信道116，直接触发cac等待10分钟，在cac检测的时间内扫描时小CPU会直接返回错误，无法正常切换信道
+    * Bug 188459 - [GWN7660 mesh][HZ] RE AP takes 10 minutes to successfully go online
     * https://192.168.120.245/#/c/215809/
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 询问MTK平台错误：reassociate response中的status code都是正常的，仍然漫游失败，不确定是什么原因
     * status 55的复现是在我提供的hostapd之后出现，怀疑是hostapd最新的更改引入的问题，使用MTK的设备进行漫游测试，确认是否可以复现status 55的问题
+    * 使用MTK平台做漫游测试，出现auth request错误码为28的错误，分析代码后错误原因为PMKR0name不正确，原因是在之前连接另外一台AP时未使用FT关联，直接Open System关联引起的PMKR0name的变化
+    * MTK平台未重现status 55的问题，让测试更换版本后继续复现，除了0xffff还有没有status code为55的错误（FT Invalid）
 * 7062会议 1小时
 * Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal
     * 尝试在配置信道与功率之前操作SSID
