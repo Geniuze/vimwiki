@@ -488,11 +488,20 @@
 * 请假半天
 * Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal
     * 尝试复现
+    * 本地仍无法复现，直接使用测试的环境尝试复现
+    * 复现方法：添加删除SSID后同时修改信道与功率
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 目前测试无法再次复现，等待测试更换环境
-* 7660  mesh扫描
+* 7660  mesh扫描 -- 田波鹏
     * iwpriv mesh0 qdf_cv_lvl 0x00150008 // scm_debug
     * iwpriv mesh0 g_qdf_cv_lvl
     * RE切换角色后，一段时间之内无法正常扫描到周围的5G SSID，只能扫到 36 44 48这几个信道的SSID，而且数据不超过10个
     * dfs_init_precac_list
     * 怀疑是dfs的precac功能需要等待DFS检测完成后才可以切换到DFS信道进行扫描
+
+= 2020.3.1 周二 =
+* 7660  mesh扫描 -- 田波鹏
+    * 继续分析dfs的流程
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 询问MTK平台错误：reassociate response中的status code都是正常的，仍然漫游失败，不确定是什么原因
+
