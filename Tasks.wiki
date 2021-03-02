@@ -507,4 +507,5 @@
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 询问MTK平台错误：reassociate response中的status code都是正常的，仍然漫游失败，不确定是什么原因
     * status 55的复现是在我提供的hostapd之后出现，怀疑是hostapd最新的更改引入的问题，使用MTK的设备进行漫游测试，确认是否可以复现status 55的问题
+* 7062会议 1小时
 
