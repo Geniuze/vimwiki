@@ -526,3 +526,5 @@
     * 测试使用7600 1.0.19.23版本正常
     * 分析代码发现7660LR使用的是MTK的检测命令，导致无法生效
     * 已解决
+* Bug 185942 - [GWN Manager_SSID]Security mode for WPA3, support 802.11W wireless terminal cannot successfully roaming
+    * 需要测试帮忙复现
