@@ -499,7 +499,7 @@
     * dfs_init_precac_list
     * 怀疑是dfs的precac功能需要等待DFS检测完成后才可以切换到DFS信道进行扫描
 
-= 2020.3.1 周二 =
+= 2020.3.2 周二 =
 * 7660  mesh扫描 -- 田波鹏
     * 继续分析dfs的流程
     * precac功能并未开启
@@ -509,9 +509,19 @@
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 询问MTK平台错误：reassociate response中的status code都是正常的，仍然漫游失败，不确定是什么原因
     * status 55的复现是在我提供的hostapd之后出现，怀疑是hostapd最新的更改引入的问题，使用MTK的设备进行漫游测试，确认是否可以复现status 55的问题
-    * 使用MTK平台做漫游测试，出现auth request错误码为28的错误，分析代码后错误原因为PMKR0name不正确，原因是在之前连接另外一台AP时未使用FT关联，直接Open System关联引起的PMKR0name的变化
+    * 使用MTK平台做漫游测试，出现auth request错误码为28的错误，分析代码后错误原因为PMKR-1name不正确，原因是在之前连接另外一台AP时未使用FT关联，直接Open System关联引起的PMKR0name的变化
     * MTK平台未重现status 55的问题，让测试更换版本后继续复现，除了0xffff还有没有status code为55的错误（FT Invalid）
 * 7062会议 1小时
-* Bug 188369 - [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal
+* Bug 188369  [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal
     * 尝试在配置信道与功率之前操作SSID
 
+= 2020.3.3 周三 =
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 邮件回复
+    * 与steven讨论需要添加的日志
+* Bug 188369  [GWN7660_rrm]wireless power is switched from RRM to the specified power, or the specified power is switched to RRM, power is abnormal
+    * 代码上库
+* Bug 186681 - [GWN Cloud_RRM]Manufacturing GWN7600LR 2.4g and 5G busy, SAMPLE_CNT value is always 0
+    * 测试沟通问题
+    * 测试使用7600 1.0.19.23版本正常
+    * 问题单中附带的log日志为MTK平台的日志
