@@ -535,7 +535,10 @@
     * 提供台湾修复auth seq的问题的版本，交给刘巍协助台湾升级
 * netport for 7660
     * port 4添加vlan后进入到port 0时，vlan被剖掉
+    * https://192.168.120.245/#/c/215266/
     * 网线全部拔掉后会出现eth0仍然是RUNNING的问题
+    * lan口down掉判断wan_status时，wan_status实际未赋值，因为wan口未插入过网线，一但wan口插入过网线，状态会变正常
+    * https://192.168.120.245/#/c/216076/
     * 切换角色时会出现打栈重启现象，怀疑可能是与DFS信道有关
 [  836.273034] Unable to handle kernel NULL pointer dereference at virtual address 00000050
 [  836.284032] pgd = ffffffc016795000
