@@ -528,3 +528,8 @@
     * 已解决
 * Bug 185942 - [GWN Manager_SSID]Security mode for WPA3, support 802.11W wireless terminal cannot successfully roaming
     * 需要测试帮忙复现
+
+= 2020.3.4 周四 =
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 回复邮件，与测试沟通
+
