@@ -545,4 +545,18 @@
 = 2020.3.5 周五 =
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 测试810版本回退后测试仍然无法漫游成功，分析日志仍然是PMKR0name不正确
+    * 与steven讨论如何添加日志
+    * 问题总结：
+        * authenticate seq 序列号未处理问题
+            * AP在收到多次STA的authentication时会处理多次，未关心seq序列号，引起两端annonce不对等
+            * AP添加处理同序列号的逻辑，相同的authentication只处理一次
+            * 已解决
+        * FT: Invalid MIC in FTIE
+            * AP日志出现FT: Invalid MIC in FTIE错误，原因是MIC校验失败
+            * 使用MTK平台的设备未出现此问题，目前还未定位
+            * 需要STA那边添加一些日志用以调试，目前还在添加中
+        * 其它错误，DUT出未知道漫游错误
+            * authentication报文中的PMKID与第一次认证时产生的PMKR0name不同，引发AP无回应
+            * MTK平台也会出现此问题
+            * 台湾回应此问题原因是DUT存在authentication报文无法正常发出，引起后续漫游出错，台湾正在定位此问题
 
