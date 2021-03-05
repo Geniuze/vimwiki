@@ -555,7 +555,7 @@
             * AP日志出现FT: Invalid MIC in FTIE错误，原因是MIC校验失败
             * 使用MTK平台的设备未出现此问题，目前还未定位
             * 需要STA那边添加一些日志用以调试，目前还在添加中
-        * 其它错误，DUT出未知道漫游错误
+        * 其它错误，DUT出未知漫游错误
             * authentication报文中的PMKID与第一次认证时产生的PMKR0name不同，引发AP无回应
             * MTK平台也会出现此问题
             * 台湾回应此问题原因是DUT存在authentication报文无法正常发出，引起后续漫游出错，台湾正在定位此问题
