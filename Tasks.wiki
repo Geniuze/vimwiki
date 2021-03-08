@@ -559,4 +559,4 @@
             * authentication报文中的PMKID与第一次认证时产生的PMKR0name不同，引发AP无回应
             * MTK平台也会出现此问题
             * 台湾回应此问题原因是DUT存在authentication报文无法正常发出，引起后续漫游出错，台湾正在定位此问题
-
+* 会议 2小时
