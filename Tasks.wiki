@@ -567,3 +567,6 @@
     * 查看交互文档，分析需要完成的功能
     * https://192.168.120.248/KODExplorer/data/User/design/home/%E4%BA%A4%E4%BA%92%E6%96%87%E6%A1%A3/GWN/GWN7062/GWN7062_WEB_v0.0.0.7/index.html#id=mv5rpm&p=__3_3_6-4-1-1___mesh____&g=1
     * 编写概要设计文档
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 分析抓包与日志
+    * 发现使用修复auth_seq的hostapd版本更容易触发DUT漫游失败的问题
