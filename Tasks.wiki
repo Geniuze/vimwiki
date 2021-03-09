@@ -575,3 +575,7 @@
 * openwrt dhcpv6 相关配置
 * 下载7062代码
 * 与劳拥华讨论auto功率的机制
+    * 目前没有可行性建议
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 分析hostapd-2.9的源码及日志，看是否已处理seq_ctrl的问题
+    * 7660处理逻辑： process_bss_event -> handle_auth
