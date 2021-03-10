@@ -583,3 +583,6 @@
     * 7660处理逻辑： process_bss_event -> handle_auth
     * 测试使用7660测试是正常的，未出现问题
     * 继续分析7610的抓包和日志，发现存在部分日志丢失的问题，缺少20秒的日志，此日志包含一次漫游失败
+
+= 2020.3.10 周三 =
+* Bug 189255 - [GWN7660LR_System]Scene is Outdoor, Channels 36-48 are not disabled
