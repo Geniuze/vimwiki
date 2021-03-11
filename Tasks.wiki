@@ -587,3 +587,9 @@
 = 2020.3.10 周三 =
 * Bug 189255 - [GWN7660LR_System]Scene is Outdoor, Channels 36-48 are not disabled
     * 应用层信道列表未支持GWN7660LR，驱动的信道列表未研究透，转给曹迪处理
+* 7062开发会议 1小时
+* 讨论7062的mesh方案
+
+= 2020.3.11 =
+* Bug 189255 - [GWN7660LR_System]Scene is Outdoor, Channels 36-48 are not disabled
+    * 
