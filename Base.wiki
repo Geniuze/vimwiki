@@ -129,3 +129,6 @@ ovs-vsctl list bridge 查看ovs配置
 
 = 7660重新烧写art分区 =
 dd if=wifi6.art of=/dev/mtdblock8
+
+= 7062文档存放位置 =
+http://192.168.120.130:8888/Products/Files/Default.aspx#1353

@@ -610,3 +610,5 @@
 = 2020.3.11 =
 * Bug 189255 - [GWN7660LR_System]Scene is Outdoor, Channels 36-48 are not disabled
     * 
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * mlme_recv_auth_ap_handle_duplicate //内部存在短时间内处理auth的丢弃逻辑
