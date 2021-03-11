@@ -586,7 +586,24 @@
 
 = 2020.3.10 周三 =
 * Bug 189255 - [GWN7660LR_System]Scene is Outdoor, Channels 36-48 are not disabled
-    * 应用层信道列表未支持GWN7660LR，驱动的信道列表未研究透，转给曹迪处理
+    * 应用层信道列表未支持GWN7660LR，驱动的信道列表未研究透
+    * 添加日志打印，分析信道处理流程
+[ 1062.214814] Call trace:
+[ 1062.215176] [<ffffffc0000890c4>] dump_backtrace+0x0/0x128
+[ 1062.217432] [<ffffffc000089200>] show_stack+0x14/0x1c
+[ 1062.222987] [<ffffffc0002517f8>] dump_stack+0x94/0xb4
+[ 1062.229679] [<ffffffbffca4cd88>] reg_compute_pdev_current_chan_list+0x28/0x558 [umac]
+[ 1062.234706] [<ffffffbffca4d534>] reg_propagate_mas_chan_list_to_pdev+0xf4/0x1d0 [umac]
+[ 1062.242516] [<ffffffbffca4d9b4>] reg_process_master_chan_list+0x3a4/0x778 [umac]
+[ 1062.250315] [<ffffffbffca4ee3c>] tgt_reg_process_master_chan_list+0x34/0x78 [umac]
+[ 1062.256989] [<ffffffbffce1e0b4>] tgt_reg_chan_list_update_handler+0x15c/0x258 [qca_ol]
+[ 1062.264330] [<ffffffbffcdf85bc>] __wmi_control_rx+0x114/0x358 [qca_ol]
+[ 1062.272214] [<ffffffbffcdf8ec4>] wmi_rx_event_work+0xf4/0x230 [qca_ol]
+[ 1062.278089] [<ffffffbffc3ba018>] __qdf_defer_func+0x18/0x40 [qdf]
+[ 1062.284538] [<ffffffc0000aacd0>] process_one_work+0x1a8/0x298
+[ 1062.290696] [<ffffffc0000ab9a8>] worker_thread+0x244/0x360
+[ 1062.296427] [<ffffffc0000b0118>] kthread+0xcc/0xd4
+[ 1062.301807] [<ffffffc000085d50>] ret_from_fork+0x10/0x40
 * 7062开发会议 1小时
 * 讨论7062的mesh方案
 
