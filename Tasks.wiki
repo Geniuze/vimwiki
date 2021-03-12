@@ -609,10 +609,17 @@
 
 = 2020.3.11 =
 * Bug 189255 - [GWN7660LR_System]Scene is Outdoor, Channels 36-48 are not disabled
-    * 
+    * 室外室内的逻辑应该正常，australlia室外未禁用band1
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * mlme_recv_auth_ap_handle_duplicate //内部存在短时间内处理auth的丢弃逻辑
     * 更换新的固件
     * 分析日志，为reassociate request 抓包可以抓到但是无线协议栈并未收到，引起漫游失败
     * 尝试本地搭建环境
     * WP810串口获取密码： nvram get 2
+    * 65535为后期引入 提交：a7beaeff
+
+= 2020.3.12 =
+* 7600与7610之间漫游失败 -- 深圳测试（杨金明）
+    * 使用本地环境复现问题，发现存在DUT完成漫游后仍然提示超时问题
+    * 已回复邮件给台湾用以定位
+
