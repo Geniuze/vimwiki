@@ -627,9 +627,9 @@
 = 2020.3.15 周一 =
 * 7600与7610之间漫游失败 -- 深圳测试（杨金明）
     * 邮件与问题单回复
-    * 
 * 7062 mesh
     * 修改文档
     * 分析hostapd的关于action帧处理的代码，并尝试添加代码以测试action帧的发送情况
+    * 分析ipc与原mesh中对key的处理
 * Bug 189505 - [GWN7660LR_Radio]2.4G&5G wireless power is switched from high (medium/low) to auto or RRM, power is directly adjusted to 15dBm
     * 该问题在之前已经解决,但未合入
