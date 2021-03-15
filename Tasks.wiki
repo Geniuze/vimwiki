@@ -631,3 +631,5 @@
 * 7062 mesh
     * 修改文档
     * 分析hostapd的关于action帧处理的代码，并尝试添加代码以测试action帧的发送情况
+* Bug 189505 - [GWN7660LR_Radio]2.4G&5G wireless power is switched from high (medium/low) to auto or RRM, power is directly adjusted to 15dBm
+    * 该问题在之前已经解决,但未合入
